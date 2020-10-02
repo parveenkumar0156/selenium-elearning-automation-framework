@@ -23,13 +23,12 @@ public class WaitTypes {
 	}
 	
 	
-	// we will have methods which returns the WebElement 
-	// on demand of explicit wait 
-	
-	
-	// this method will return WebElement 
-	// when on the page it is available for presence
-	// presenceOfElementLocated
+	/* we will have methods which returns the WebElement 
+	 on demand of explicit wait 
+	 this method will return WebElement 
+	 when on the page it is available for presence
+	 presenceOfElementLocated
+	 */
 	public WebElement presenceElementLocated(By locator, int timeout){
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
@@ -44,18 +43,15 @@ public class WaitTypes {
 		return null;
 	}
 	
-	// this method shall take String parameter, and assumiing that it will 
-	// only send by id 
+	/* this method shall take String parameter, and assumiing that it will 
+	 only send by id */
 	public WebElement presenceElementLocated(String locator, int timeout){
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
-			WebElement element  = wait.until(
-					ExpectedConditions.presenceOfElementLocated(By.id(locator))
-					);
-			System.out.println("Element Located");
-			return element;
+			return wait.until(ExpectedConditions.presenceOfElementLocated(By.id(locator)));
 		}catch(Exception e ){
 			System.out.println("Element Not Located " + e);
+			//can print stacktrace with marking it fail(gard or soft assertion)
 		}
 		return null;
 	}
